@@ -1,0 +1,60 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+  }
+  
+  .article-detail {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .article-detail img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .article-detail h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .article-detail p {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 0.5rem 0;
+  }
+  
+  .article-detail p.on-sale {
+    color: #d9534f;
+    font-weight: bold;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .article-detail button {
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .article-detail button:hover {
+    background-color: #0056b3;
+  }
+  
