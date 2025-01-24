@@ -1,20 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ArticleService } from '../services/article.service';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-article-detail',
-  templateUrl: './article-detail.component.html',
+  standalone: true,
+  imports: [CommonModule, RouterModule], 
+  template: `
+    <div>
+      <h1>Article Details</h1>
+      <p>Article ID: {{ articleId }}</p>
+    </div>
+  `,
+  styleUrls: ['./article-detail.component.css'],
 })
 export class ArticleDetailComponent implements OnInit {
-  article: any;
+  articleId: string | null = null;
 
-  constructor(private route: ActivatedRoute, private articleService: ArticleService) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.articleService.getArticleById(id).subscribe((data) => {
-      this.article = data;
-    });
+    this.articleId = this.route.snapshot.paramMap.get('id'); 
   }
 }
