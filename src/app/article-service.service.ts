@@ -21,6 +21,10 @@ export class ArticleService {
     );
   }
 
+  getArticleById(id: string): Observable<Article> {
+    return this.http.get<Article>(`${this.apiUrl}/${id}`);
+  }
+
   changeQuantity(id: number, changeInQuantity: number): Observable<any> {
     return this.http.patch(`${this.apiUrl}/${id}`, { changeInQuantity }).pipe(
       tap(() => this.getArticles().subscribe())
