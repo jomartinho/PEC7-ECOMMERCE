@@ -1,0 +1,38 @@
+<div class="container">
+    <h2>Nuevo Chocolate</h2>
+    <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name">Nombre del Chocolate:</label>
+        <input id="name" formControlName="name" type="text" />
+        <div *ngIf="articleForm.get('name')?.touched && articleForm.get('name')?.invalid">
+          <small>El nombre es obligatorio.</small>
+        </div>
+      </div>
+  
+      <div>
+        <label for="price">Precio:</label>
+        <input id="price" formControlName="price" type="number" />
+        <div *ngIf="articleForm.get('price')?.touched && articleForm.get('price')?.invalid">
+          <small>El precio debe ser numérico y no puede estar vacío.</small>
+        </div>
+      </div>
+  
+      <div>
+        <label for="imageUrl">URL de la Imagen:</label>
+        <input id="imageUrl" formControlName="imageUrl" type="text" />
+        <div *ngIf="articleForm.get('imageUrl')?.touched && articleForm.get('imageUrl')?.invalid">
+          <small>Debe ser una URL válida.</small>
+        </div>
+      </div>
+  
+      <div>
+        <label>
+          <input type="checkbox" formControlName="isOnSale" />
+          ¿Está en venta?
+        </label>
+      </div>
+  
+      <button type="submit" [disabled]="articleForm.invalid">Guardar</button>
+    </form>
+  </div>
+  

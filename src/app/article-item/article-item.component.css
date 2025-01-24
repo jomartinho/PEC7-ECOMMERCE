@@ -1,0 +1,17 @@
+.article {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+}
+.article img {
+  max-width: 100px;
+}
+
+.on-sale {
+  border-color: green;
+}
+
+.sale {
+  color: red;
+  font-weight: bold;
+}
