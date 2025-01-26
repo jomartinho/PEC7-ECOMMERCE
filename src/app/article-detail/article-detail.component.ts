@@ -15,8 +15,16 @@ export class ArticleDetailComponent implements OnInit {
   article: Article | null = null; 
   articleId: string | null = null;
 
-  constructor(private route: ActivatedRoute, private articleService: ArticleService) {}
+  constructor(
+    //private route: ActivatedRoute, 
+    private articleService: ArticleService
+    ) {}
 
+  
+  ngOnInit() {
+    console.log('ActivatedRoute is temporarily removed.');
+  }
+  /*
   ngOnInit() {
     this.articleId = this.route.snapshot.paramMap.get('id');
     if (this.articleId) {
@@ -26,5 +34,5 @@ export class ArticleDetailComponent implements OnInit {
     } else {
       console.error('Article ID is null!');
     }
-  }
+  }*/
 }
