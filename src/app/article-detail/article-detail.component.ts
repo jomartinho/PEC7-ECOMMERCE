@@ -6,7 +6,6 @@ import { Article } from '../models/article.model';
 
 @Component({
   selector: 'app-article-detail',
-  standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './article-detail.component.html',
   styleUrls: ['./article-detail.component.css'],
@@ -16,7 +15,7 @@ export class ArticleDetailComponent implements OnInit {
   articleId: string | null = null;
 
   constructor(
-    //private route: ActivatedRoute, 
+    private route: ActivatedRoute, 
     private articleService: ArticleService
     ) {}
 

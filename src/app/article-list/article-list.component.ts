@@ -2,12 +2,9 @@ import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { ArticleService } from '../article-service.service';
 import { Observable } from 'rxjs';
 import { Article } from '../models/article.model';
-import { ArticleItemComponent } from '../article-item/article-item.component';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-article-list',
-  standalone: true,
   template: `
     <div>
       <input
@@ -25,7 +22,6 @@ import { CommonModule } from '@angular/common';
       </li>
     </ul>
   `,
-  imports: [CommonModule, ArticleItemComponent],
   styles: [
     `
       .article {

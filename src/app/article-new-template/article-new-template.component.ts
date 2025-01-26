@@ -5,7 +5,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-article-new-template',
-  standalone: true,
   templateUrl: './article-new-template.component.html',
   styleUrls: ['./article-new-template.component.css'],
   imports: [CommonModule, ReactiveFormsModule] 

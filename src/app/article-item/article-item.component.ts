@@ -40,7 +40,6 @@ import { DefaultImagePipe } from '../pipes/default-image.pipe';
       }
     `,
   ],
-  standalone: true,
   imports: [CommonModule, DefaultImagePipe],
   templateUrl: './article-item.component.html',
   styleUrls: ['./article-item.component.css'],

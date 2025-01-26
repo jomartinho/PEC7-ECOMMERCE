@@ -5,8 +5,7 @@ import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [ReactiveFormsModule, RouterModule], // Include ReactiveFormsModule here
+  imports: [ReactiveFormsModule, RouterModule], 
   template: `
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <label>Username:</label>
