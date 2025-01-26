@@ -1,22 +1,20 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class UserStoreService {
-  private token: string | null = null;
-
-  setToken(token: string): void {
-    this.token = token;
-    localStorage.setItem('authToken', token);
-  }
-
-  getToken(): string | null {
-    if (!this.token) {
-      this.token = localStorage.getItem('authToken');
-    }
-    return this.token;
-  }
+  private tokenKey = 'auth_token';
 
   isAuthenticated(): boolean {
-    return !!this.getToken();
+    return !!localStorage.getItem(this.tokenKey);
+  }
+
+  saveToken(token: string): void {
+    localStorage.setItem(this.tokenKey, token);
+  }
+
+  clearToken(): void {
+    localStorage.removeItem(this.tokenKey);
   }
 }

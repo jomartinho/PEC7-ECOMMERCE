@@ -1,71 +1,55 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { ArticleService } from '../article-service.service';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ArticleService } from '../services/article-service.service';
 import { Article } from '../models/article.model';
+import { CommonModule } from '@angular/common';
+import { ArticleItemComponent } from '../article-item/article-item.component';
 
 @Component({
   selector: 'app-article-list',
-  template: `
-    <div>
-      <input
-        type="text"
-        placeholder="Search articles"
-        (input)="onSearch($event)"
-      />
-    </div>
-    <ul>
-      <li *ngFor="let article of articles$ | async" class="article">
-        <app-article-item
-          [article]="article"
-          (quantityChange)="handleQuantityChange($event)"
-        ></app-article-item>
-      </li>
-    </ul>
-  `,
-  styles: [
-    `
-      .article {
-        margin-bottom: 20px;
-      }
-
-      input {
-        margin-bottom: 20px;
-        padding: 10px;
-        width: 100%;
-        box-sizing: border-box;
-      }
-
-      ul {
-        list-style: none;
-        padding: 0;
-      }
-
-      li {
-        margin-bottom: 10px;
-      }
-    `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true, 
+  imports: [CommonModule, ArticleItemComponent],
+  templateUrl: './article-list.component.html',
+  styleUrls: ['./article-list.component.css']
 })
 export class ArticleListComponent implements OnInit {
-  articles$!: Observable<Article[]>;
+  articles: Article[] = [];
+  searchTerm: string = '';
 
-  constructor(private articleService: ArticleService) {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private articleService: ArticleService
+  ) {}
 
   ngOnInit(): void {
-    this.articles$ = this.articleService.articles$;
-    this.articleService.getArticles().subscribe();
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.searchTerm = params['q'] || '';
+      this.fetchArticles();
+    });
   }
 
-  onSearch(event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    const query = inputElement.value.trim();
-    this.articleService.getArticles(query).subscribe();
+  fetchArticles(): void {
+    this.articleService.getArticles(this.searchTerm).subscribe(
+      (articles) => {
+        this.articles = articles;
+      },
+      (error) => {
+        console.error('Error fetching articles:', error);
+      }
+    );
   }
 
-  handleQuantityChange(change: { article: Article; quantity: number }): void {
-    this.articleService
-      .changeQuantity(change.article.id, change.quantity - change.article.quantityInCart)
-      .subscribe();
+  handleQuantityChange(event: { article: Article; quantity: number }): void {
+    const articleIndex = this.articles.findIndex(a => a.id === event.article.id);
+    if (articleIndex !== -1) {
+      this.articles[articleIndex].quantityInCart = event.quantity;
+      console.log(`Updated article ${event.article.id} to quantity ${event.quantity}`);
+    }
+  }
+  
+
+  onSearch(term: string): void {
+    this.searchTerm = term;
+    this.fetchArticles();
   }
 }

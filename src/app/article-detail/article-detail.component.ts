@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ArticleService } from '../article-service.service';
+import { ArticleService } from '../services/article-service.service';
 import { Article } from '../models/article.model';
 
 @Component({
   selector: 'app-article-detail',
   imports: [CommonModule, RouterModule],
+  standalone: true, 
   templateUrl: './article-detail.component.html',
   styleUrls: ['./article-detail.component.css'],
 })

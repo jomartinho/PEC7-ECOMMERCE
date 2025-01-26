@@ -1,0 +1,12 @@
+<div>
+    <input type="text" (input)="onSearch($any($event.target).value)" />
+  </div>
+  <ul>
+    <li *ngFor="let article of articles" class="article">
+      <app-article-item
+        [article]="article"
+        (quantityChange)="handleQuantityChange($event)"
+      ></app-article-item>
+    </li>
+  </ul>
+  
