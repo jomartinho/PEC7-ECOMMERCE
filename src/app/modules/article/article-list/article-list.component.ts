@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ArticleService } from '../../../services/article-service.service';
 import { Article } from '../../../models/article.model';
 import { CommonModule } from '@angular/common';
@@ -8,7 +8,7 @@ import { ArticleItemComponent } from './article-item/article-item.component';
 @Component({
   selector: 'app-article-list',
   standalone: true, 
-  imports: [CommonModule, ArticleItemComponent],
+  imports: [CommonModule, ArticleItemComponent, RouterModule],
   templateUrl: './article-list.component.html',
   styleUrls: ['./article-list.component.css']
 })

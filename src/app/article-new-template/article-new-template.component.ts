@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-article-new-template',
   standalone: true, 
   templateUrl: './article-new-template.component.html',
   styleUrls: ['./article-new-template.component.css'],
-  imports: [CommonModule, ReactiveFormsModule] 
+  imports: [CommonModule, ReactiveFormsModule, RouterModule] 
 })
 export class ArticleNewTemplateComponent {
   articleForm: FormGroup;

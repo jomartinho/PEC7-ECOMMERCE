@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Article } from '../../../../models/article.model';
 import { CommonModule } from '@angular/common';
 import { DefaultImagePipe } from '../../../../pipes/default-image.pipe';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-article-item',
@@ -40,7 +41,7 @@ import { DefaultImagePipe } from '../../../../pipes/default-image.pipe';
       }
     `,
   ],
-  imports: [CommonModule, DefaultImagePipe],
+  imports: [CommonModule, DefaultImagePipe, RouterModule],
   standalone: true, 
   templateUrl: './article-item.component.html',
   styleUrls: ['./article-item.component.css'],
