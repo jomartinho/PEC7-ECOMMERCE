@@ -8,7 +8,12 @@ import { UserStoreService } from '../services/user-store.service';
 export class AuthGuard implements CanActivate {
   constructor(private userStore: UserStoreService, private router: Router) {}
 
-  canActivate(): boolean {
+  canActivate(route: any): boolean {
+    if (route.routeConfig?.path === 'login' && this.userStore.isAuthenticated()) {
+      this.router.navigate(['/article/list']); // Redirige al listado si ya está autenticado
+      return false;
+    }
+
     if (this.userStore.isAuthenticated()) {
       return true;
     } else {

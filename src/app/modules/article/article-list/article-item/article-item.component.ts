@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Article } from '../models/article.model';
+import { Article } from '../../../../models/article.model';
 import { CommonModule } from '@angular/common';
-import { DefaultImagePipe } from '../pipes/default-image.pipe';
+import { DefaultImagePipe } from '../../../../pipes/default-image.pipe';
 
 @Component({
   selector: 'app-article-item',

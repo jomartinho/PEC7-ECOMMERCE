@@ -1,14 +1,29 @@
-import { Component } from '@angular/core';
-import { NavbarComponent } from "./navbar/navbar.component";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserStoreService } from './services/user-store.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ArticleItemComponent } from './modules/article/article-list/article-item/article-item.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  standalone: true, 
-  template: `
-    <app-navbar></app-navbar>
-    <router-outlet></router-outlet>
-  `,
+  standalone: true,
+  imports: [CommonModule, NavbarComponent, ArticleItemComponent],
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  imports: [],
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  selectedArticle: any; 
+
+  constructor(private userStore: UserStoreService, private router: Router) {}
+
+  ngOnInit(): void {
+    if (!this.userStore.isAuthenticated()) {
+      this.router.navigate(['/login']);
+    }
+  }
+
+  changeView(view: string): void {
+    console.log('Change view:', view); 
+  }
+}

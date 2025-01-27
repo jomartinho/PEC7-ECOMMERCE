@@ -1,2 +1,2 @@
-<app-navbar (selectView)="changeView($event)"></app-navbar>
+<app-navbar (selectView)="$any(changeView($event))"></app-navbar>
 <app-article-item [article]="selectedArticle"></app-article-item>

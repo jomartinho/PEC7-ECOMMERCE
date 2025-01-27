@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ArticleService } from '../services/article-service.service';
-import { Article } from '../models/article.model';
+import { ArticleService } from '../../../services/article-service.service';
+import { Article } from '../../../models/article.model';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ArticleService } from '../services/article-service.service';
-import { Article } from '../models/article.model';
+import { ArticleService } from '../../../services/article-service.service';
+import { Article } from '../../../models/article.model';
 import { CommonModule } from '@angular/common';
-import { ArticleItemComponent } from '../article-item/article-item.component';
+import { ArticleItemComponent } from './article-item/article-item.component';
 
 @Component({
   selector: 'app-article-list',

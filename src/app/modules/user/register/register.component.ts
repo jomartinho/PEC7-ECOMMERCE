@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { UserService } from '../services/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({

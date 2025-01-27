@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ArticleService } from '../services/article-service.service';
-import { Article } from '../models/article.model';
+import { ArticleService } from '../../../services/article-service.service';
+import { Article } from '../../../models/article.model';
 
 @Component({
   selector: 'app-article-detail',
