@@ -7,15 +7,7 @@ import { UserService } from '../../../services/user.service';
   selector: 'app-login',
   standalone: true, 
   imports: [ReactiveFormsModule, RouterModule], 
-  template: `
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <label>Username:</label>
-      <input formControlName="username" />
-      <label>Password:</label>
-      <input formControlName="password" type="password" />
-      <button type="submit">Login</button>
-    </form>
-  `,
+  templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
